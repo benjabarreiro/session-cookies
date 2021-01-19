@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <% if(typeof errors != 'undefined') { %>
+        <p style="color: red;">ERROR</p>
+        <ul>
+            <% for(let i=0; i<errors.length; i++) { %>
+                <li><%= errors[i].msg %> </li>
+            <% } %> 
+        </ul>
+    <% } %> 
+    <form action="/users/register" method="POST">
+        <label for="">Username</label>
+        <input type="text" name="username">
+        <br>
+        <label for="">Email</label>
+        <input type="email" name="email">
+        <br>
+        <label for="">Password</label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="registrarse">
+    </form>
+</body>
+</html>
