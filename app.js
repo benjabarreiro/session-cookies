@@ -8,6 +8,8 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var cookieAuthMiddleware = require('./middlewares/cookieAuthMiddleware');
+
 var app = express();
 
 // view engine setup
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({secret: 'secret'}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

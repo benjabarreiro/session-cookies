@@ -67,6 +67,11 @@ module.exports = {
             }
 
             req.session.userLogged = userToLogin;
+
+            if(req.body.remember != undefined) {
+                res.cookie('remember', userToLogin.email, {maxAge: 60000});
+            }
+
             res.render('success');
         } else {
             res.render('login', {errors: errors.errors});
